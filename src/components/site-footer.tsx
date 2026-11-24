@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { EmailSignupForm } from "@/components/email-signup-form";
+import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_TEL } from "@/lib/contact";
 
 const explore = [
   { href: "/portraits", label: "Portraits" },
@@ -28,7 +29,7 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:grid-cols-3 sm:px-10">
+      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:grid-cols-2 sm:px-10 lg:grid-cols-4">
         <div>
           <p className="font-display text-3xl leading-none">Roots</p>
           <p className="mt-4 max-w-xs text-[14px] leading-relaxed text-paper/70">
@@ -61,6 +62,21 @@ export function SiteFooter() {
               Roots on the Road
             </a>
           </p>
+        </div>
+        <div>
+          <p className="font-mono text-[10px] uppercase text-paper/70">Contact</p>
+          <ul className="mt-4 space-y-2 text-[14px]">
+            <li>
+              <a href={`mailto:${CONTACT_EMAIL}`} className="break-all text-paper/85 hover:text-wheat">
+                {CONTACT_EMAIL}
+              </a>
+            </li>
+            <li>
+              <a href={`tel:${CONTACT_PHONE_TEL}`} className="text-paper/85 hover:text-wheat">
+                {CONTACT_PHONE_DISPLAY}
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
       <div className="border-t border-paper/15">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_TEL } from "@/lib/contact";
 
 export const metadata = {
   title: "Privacy — Roots",
@@ -91,16 +92,9 @@ const sections: { title: string; body: React.ReactNode }[] = [
       <p>
         If you&rsquo;re featured on Roots and want something corrected,
         updated, or removed, or you&rsquo;d like your email taken off our
-        list, get in touch and we&rsquo;ll take care of it. You can reach the
-        team through{" "}
-        <a
-          href="https://rootsontheroad.squarespace.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Roots on the Road
-        </a>
-        .
+        list, get in touch and we&rsquo;ll take care of it. Email{" "}
+        <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> or call{" "}
+        <a href={`tel:${CONTACT_PHONE_TEL}`}>{CONTACT_PHONE_DISPLAY}</a>.
       </p>
     ),
   },

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getTripPhotos } from "@/lib/trip-photos";
 import { ArrowRightIcon, BikeIcon } from "@/components/icons";
+import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_TEL } from "@/lib/contact";
 
 export const metadata = {
   title: "About — Roots",
@@ -102,6 +103,32 @@ export default async function AboutPage() {
           >
             Follow the trip at Roots on the Road &rarr;
           </a>
+        </div>
+      </section>
+
+      {/* Get in touch */}
+      <section className="border-t border-line">
+        <div className="mx-auto grid max-w-3xl gap-6 px-6 py-16 sm:px-10 md:grid-cols-[1fr_2fr] md:gap-12">
+          <p className="section-label">Get in touch</p>
+          <div>
+            <p className="text-[17px] leading-relaxed text-ink-soft">
+              Questions, ideas, a story you&rsquo;d like us to hear, or a
+              correction to something on the site: we&rsquo;d love to hear
+              from you.
+            </p>
+            <div className="mt-6 space-y-2 font-display text-2xl text-ink">
+              <p>
+                <a href={`mailto:${CONTACT_EMAIL}`} className="break-all hover:text-moss">
+                  {CONTACT_EMAIL}
+                </a>
+              </p>
+              <p>
+                <a href={`tel:${CONTACT_PHONE_TEL}`} className="hover:text-moss">
+                  {CONTACT_PHONE_DISPLAY}
+                </a>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
