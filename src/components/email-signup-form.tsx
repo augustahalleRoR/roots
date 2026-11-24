@@ -49,7 +49,7 @@ export function EmailSignupForm() {
         maxLength={200}
         placeholder="you@example.com"
         aria-label="Email address"
-        className="w-full border border-paper/40 bg-transparent px-3 py-2 text-[14px] text-paper placeholder:text-paper/50 focus:border-paper focus:outline-none sm:w-56"
+        className="w-full border border-paper/40 bg-transparent px-3 py-2 text-[14px] text-paper placeholder:text-paper/65 focus:border-paper focus:outline-none sm:w-56"
       />
       <button
         type="submit"

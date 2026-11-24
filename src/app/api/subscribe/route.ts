@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getWriteClient } from "@/sanity/client";
+import { notifyNewSubmission } from "@/lib/notify";
 import { field, isBot } from "@/lib/form-guard";
 
 export async function POST(request: NextRequest) {
@@ -36,6 +37,13 @@ export async function POST(request: NextRequest) {
     _type: "subscriber",
     email,
     subscribedAt: new Date().toISOString(),
+  });
+
+  await notifyNewSubmission({
+    subject: "New Roots email signup",
+    heading: "Someone signed up for updates",
+    fields: [{ label: "Email", value: email }],
+    studioPath: "/studio/structure/subscriber",
   });
 
   return NextResponse.json({ ok: true, id: doc._id });

@@ -36,6 +36,13 @@ export async function generateMetadata({
   };
 }
 
+function fullDate(iso?: string) {
+  if (!iso) return undefined;
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return undefined;
+  return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+}
+
 function monthYear(iso?: string) {
   if (!iso) return undefined;
   const d = new Date(iso);
@@ -62,9 +69,11 @@ export default async function RootPage({
   );
   const more = sameCollection.length > 0 ? sameCollection : allRoots.filter((r) => r.slug !== root.slug);
   const visited = monthYear(root.visitedOn);
+  const written = fullDate(root.writtenOn);
   const credits = [
     root.writtenBy && `Words by ${root.writtenBy}`,
-    root.photographedBy && `Photographs by ${root.photographedBy}`,
+    root.photographedBy && `Photography by ${root.photographedBy}`,
+    written,
     visited && `Visited ${visited}`,
     root.collectionTitle && `Part of ${root.collectionTitle}`,
   ].filter(Boolean) as string[];

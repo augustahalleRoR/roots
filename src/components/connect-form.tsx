@@ -85,10 +85,17 @@ export function ConnectForm({ rootSlug }: { rootSlug: string }) {
       <button
         type="submit"
         disabled={submitting}
-        className="rounded-sm bg-ink px-6 py-3 font-mono text-[13px] uppercase tracking-wide text-paper transition-colors hover:bg-moss-deep disabled:opacity-50"
+        className="bg-ink px-6 py-3 font-mono text-[12px] uppercase text-paper transition-colors hover:bg-moss disabled:opacity-50"
       >
         {submitting ? "Sending…" : "Send introduction request"}
       </button>
+      <p className="text-[13px] leading-relaxed text-ink-soft">
+        We read your note and pass it along ourselves. Your email is never
+        published or shared without your OK.{" "}
+        <a href="/privacy" className="underline decoration-line underline-offset-4 hover:text-ink">
+          Privacy
+        </a>
+      </p>
     </form>
   );
 }

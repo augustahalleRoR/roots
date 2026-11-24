@@ -26,6 +26,7 @@ const rootProjection = `{
   "collectionTitle": collection->title,
   writtenBy,
   photographedBy,
+  writtenOn,
   visitedOn,
   dek
 }`;

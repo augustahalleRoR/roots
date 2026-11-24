@@ -49,6 +49,7 @@ type SanityRootDoc = {
   collectionTitle?: string;
   writtenBy?: string;
   photographedBy?: string;
+  writtenOn?: string;
   visitedOn?: string;
   dek?: string;
 };
@@ -89,6 +90,7 @@ function mapSanityRoot(doc: SanityRootDoc): Root {
     collectionTitle: doc.collectionTitle ?? undefined,
     writtenBy: doc.writtenBy ?? undefined,
     photographedBy: doc.photographedBy ?? undefined,
+    writtenOn: doc.writtenOn ?? undefined,
     visitedOn: doc.visitedOn ?? undefined,
     dek: doc.dek ?? undefined,
   };

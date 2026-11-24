@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getWriteClient } from "@/sanity/client";
+import { notifyNewSubmission } from "@/lib/notify";
 import { field, isBot } from "@/lib/form-guard";
 
 export async function POST(request: NextRequest) {
@@ -44,6 +45,17 @@ export async function POST(request: NextRequest) {
     email,
     note,
     status: "new",
+  });
+
+  await notifyNewSubmission({
+    subject: `New introduction request for ${rootSlug}`,
+    heading: `Someone wants to be introduced (${rootSlug})`,
+    fields: [
+      { label: "From", value: name },
+      { label: "Email", value: email },
+      { label: "Note", value: note },
+    ],
+    studioPath: "/studio/structure/connectRequest",
   });
 
   return NextResponse.json({ ok: true, id: doc._id });

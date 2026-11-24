@@ -7,6 +7,7 @@ const explore = [
   { href: "/map", label: "The Map" },
   { href: "/about", label: "About" },
   { href: "/add", label: "Nominate someone" },
+  { href: "/privacy", label: "Privacy" },
 ];
 
 export function SiteFooter() {
@@ -37,7 +38,7 @@ export function SiteFooter() {
           </p>
         </div>
         <div>
-          <p className="font-mono text-[10px] uppercase text-paper/55">Explore</p>
+          <p className="font-mono text-[10px] uppercase text-paper/70">Explore</p>
           <ul className="mt-4 space-y-2 text-[14px]">
             {explore.map((item) => (
               <li key={item.href}>
@@ -49,7 +50,7 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <p className="font-mono text-[10px] uppercase text-paper/55">Where it started</p>
+          <p className="font-mono text-[10px] uppercase text-paper/70">Where it started</p>
           <p className="mt-4 text-[14px]">
             <a
               href="https://rootsontheroad.squarespace.com/"
@@ -63,7 +64,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-paper/15">
-        <p className="mx-auto max-w-6xl px-6 py-5 font-mono text-[10px] uppercase text-paper/45 sm:px-10">
+        <p className="mx-auto max-w-6xl px-6 py-5 font-mono text-[10px] uppercase text-paper/70 sm:px-10">
           Roots &middot; Food has roots. So do we.
         </p>
       </div>

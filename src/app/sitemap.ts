@@ -12,6 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${siteUrl}/collections/roots-on-the-road`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${siteUrl}/map`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${siteUrl}/about`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${siteUrl}/privacy`, changeFrequency: "yearly", priority: 0.3 },
     { url: `${siteUrl}/add`, changeFrequency: "monthly", priority: 0.5 },
     ...roots.map((r) => ({
       url: `${siteUrl}/roots/${r.slug}`,

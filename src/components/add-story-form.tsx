@@ -279,10 +279,18 @@ export function AddStoryForm({ initialSubject }: { initialSubject?: Subject } = 
           <button
             type="submit"
             disabled={submitting}
-            className="rounded-sm bg-ink px-6 py-3 font-mono text-[13px] uppercase tracking-wide text-paper transition-colors hover:bg-moss-deep disabled:opacity-50"
+            className="bg-ink px-6 py-3 font-mono text-[12px] uppercase text-paper transition-colors hover:bg-moss disabled:opacity-50"
           >
             {submitting ? "Submitting…" : "Submit for review"}
           </button>
+          <p className="text-[13px] leading-relaxed text-ink-soft">
+            Every submission is read by hand. We check in with the person
+            before anything is published, and we never publish contact
+            details.{" "}
+            <a href="/privacy" className="underline decoration-line underline-offset-4 hover:text-ink">
+              How we handle what you share
+            </a>
+          </p>
         </fieldset>
       )}
     </form>

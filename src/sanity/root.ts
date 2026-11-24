@@ -65,6 +65,12 @@ export const root = defineType({
       type: "string",
     }),
     defineField({
+      name: "writtenOn",
+      title: "Written on",
+      type: "date",
+      description: "Shown in the credit line, e.g. \"July 21, 2026\".",
+    }),
+    defineField({
       name: "visitedOn",
       title: "Visited / interviewed on",
       type: "date",

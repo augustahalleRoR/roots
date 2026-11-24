@@ -36,6 +36,7 @@ export type Root = {
   collectionTitle?: string;
   writtenBy?: string;
   photographedBy?: string;
+  writtenOn?: string; // ISO date
   visitedOn?: string; // ISO date
   dek?: string; // one-line summary under the headline
 };

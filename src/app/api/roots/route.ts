@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getWriteClient } from "@/sanity/client";
+import { notifyNewSubmission } from "@/lib/notify";
 import { field, isBot, MAX_PHOTOS, MAX_PHOTO_BYTES } from "@/lib/form-guard";
 
 function slugify(input: string) {
@@ -146,6 +147,21 @@ export async function POST(request: NextRequest) {
     contact,
     openToConnect,
     photos,
+  });
+
+  await notifyNewSubmission({
+    subject: `New Roots nomination: ${name}`,
+    heading: `New nomination: ${name}`,
+    fields: [
+      { label: "Where", value: `${city}, ${state}` },
+      { label: "Quote", value: quote },
+      { label: "One line", value: oneLine },
+      { label: "Story", value: storyText ? `${storyText.slice(0, 600)}${storyText.length > 600 ? "…" : ""}` : undefined },
+      { label: "Photos", value: photos.length ? String(photos.length) : undefined },
+      { label: "Submitted by", value: submittedBy },
+      { label: "Contact", value: contact },
+    ],
+    studioPath: "/studio/structure/root",
   });
 
   return NextResponse.json({ ok: true, id: doc._id });
