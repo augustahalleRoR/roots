@@ -1,0 +1,140 @@
+@import "tailwindcss";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/600.css";
+@import "@fontsource/cormorant-garamond/500-italic.css";
+@import "@fontsource/cormorant-garamond/600-italic.css";
+@import "@fontsource-variable/jost/wght.css";
+@import "@fontsource-variable/jost/wght-italic.css";
+
+:root {
+  /* -- Roots design tokens: editorial --
+     Modeled on photography books and story archives: a white ground,
+     near-black type, thin rules, and one restrained accent (deep forest
+     green). The photos carry the color. */
+  --paper: #fcfcfa;       /* near-white page ground */
+  --paper-warm: #f3f2ee;  /* soft stone panel -- neutral, not cream */
+  --ink: #161615;         /* near-black text */
+  --ink-soft: #5f5e59;    /* secondary text */
+  --moss: #2f5240;        /* forest green -- the one accent */
+  --moss-deep: #1d3427;   /* deep forest -- dark bands, footer */
+  --wheat: #c2a36b;       /* muted brass -- small details on dark grounds */
+  --indigo: #2f5240;      /* links -- same forest accent */
+  --thread: #2f5240;
+  --line: #e2e0da;        /* hairline rule */
+
+  --font-display: "Cormorant Garamond", "Cormorant", Garamond, "Times New Roman", serif;
+  --font-body: "Jost Variable", "Jost", "Futura", ui-sans-serif, system-ui, sans-serif;
+  /* Labels and buttons. Not monospace; the name stays so the existing
+     font-mono classes keep working. */
+  --font-mono: "Jost Variable", "Jost", "Futura", ui-sans-serif, sans-serif;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-warm: var(--paper-warm);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-moss: var(--moss);
+  --color-moss-deep: var(--moss-deep);
+  --color-wheat: var(--wheat);
+  --color-indigo: var(--indigo);
+  --color-thread: var(--thread);
+  --color-line: var(--line);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+/* In the base layer so utility classes like border-transparent still win. */
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+}
+
+html {
+  background: var(--paper);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 380;
+}
+
+::selection {
+  background: var(--moss);
+  color: var(--paper);
+}
+
+/* Type defaults live in the components layer, so a size, weight, or
+   leading set directly on an element (a Tailwind utility) still wins. */
+@layer components {
+  /* Display serif: sentence case, a touch tight, medium weight -- the
+     elegant book-title voice. */
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.012em;
+  }
+  :where(h1, h2).font-display {
+    line-height: 1.04;
+  }
+  /* Labels and buttons: small, light-weight, widely spaced capitals. */
+  .font-mono {
+    font-family: var(--font-mono);
+    font-weight: 450;
+    letter-spacing: 0.14em;
+  }
+}
+
+.rule {
+  border-top: 1px solid var(--line);
+}
+
+/* Section label -- the small heading that opens each section. Quiet,
+   spaced capitals in the forest accent, like a museum wall label. */
+.section-label {
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--moss);
+}
+.section-label--invert {
+  color: var(--wheat);
+}
+
+/* Long-form story text: the magazine reading column. */
+.prose-story p {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+.prose-story p + p {
+  margin-top: 1.25rem;
+}
+/* The opening of the story: a larger first paragraph with its first words
+   set in the display serif, like a magazine lead-in. */
+.prose-story p:first-child {
+  font-size: 1.3rem;
+  line-height: 1.65;
+}
+.prose-story p:first-child::first-line {
+  font-weight: 500;
+}
+
+/* Map states -- a faint forest-tinted fill with a gentle highlight on
+   hover, so the map reads as an interactive surface. */
+.map-state {
+  fill: color-mix(in srgb, var(--moss) 5%, var(--paper-warm));
+  stroke: var(--line);
+  stroke-width: 1;
+  transition: fill 0.15s ease;
+}
+.map-state:hover {
+  fill: color-mix(in srgb, var(--moss) 16%, var(--paper-warm));
+}
