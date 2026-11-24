@@ -20,7 +20,7 @@ export function SiteHeader() {
           <span className="font-display text-[2rem] leading-none text-ink">
             Roots
           </span>
-          <span className="hidden font-mono text-[10px] uppercase text-ink-soft md:block">
+          <span className="hidden whitespace-nowrap font-mono text-[10px] uppercase text-ink-soft lg:block">
             Food has roots. So do we.
           </span>
         </Link>
@@ -41,9 +41,9 @@ export function SiteHeader() {
           })}
           <Link
             href="/add"
-            className="hidden border border-ink px-4 py-2 text-ink transition-colors hover:bg-ink hover:text-paper sm:inline-block"
+            className="hidden whitespace-nowrap border border-ink px-4 py-2 text-ink transition-colors hover:bg-ink hover:text-paper sm:inline-block"
           >
-            Nominate someone
+            Add someone to the map
           </Link>
         </nav>
       </div>

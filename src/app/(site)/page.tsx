@@ -80,7 +80,7 @@ export default async function Home() {
               href="/add"
               className="border-b border-ink pb-0.5 font-mono text-[11px] uppercase text-ink transition-colors hover:border-moss hover:text-moss"
             >
-              Nominate someone
+              Add someone to the map
             </Link>
           </div>
         </div>
@@ -278,7 +278,7 @@ export default async function Home() {
                 href="/add"
                 className="inline-flex items-center gap-2 bg-ink px-6 py-3.5 font-mono text-[11px] uppercase text-paper transition-colors hover:bg-moss"
               >
-                Nominate someone <ArrowRightIcon className="h-3.5 w-3.5" />
+                Add someone to the map <ArrowRightIcon className="h-3.5 w-3.5" />
               </Link>
               <ShareButton
                 title="Roots"

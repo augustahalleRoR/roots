@@ -10,14 +10,14 @@ export default async function AddPage({
   searchParams: Promise<{ for?: string }>;
 }) {
   // /add?for=self or /add?for=other preselects the first question, so the
-  // homepage's "Tell your own story" / "Nominate someone" buttons land
+  // homepage's "Tell your own story" / "Add someone to the map" buttons land
   // one step in.
   const { for: who } = await searchParams;
   const initialSubject = who === "self" ? "self" : who === "other" ? "other" : undefined;
 
   return (
     <section className="mx-auto max-w-2xl px-6 py-14 sm:px-10">
-      <p className="section-label">Nominate someone</p>
+      <p className="section-label">Add someone to the map</p>
       <h1 className="mt-2 font-display text-5xl text-ink">Add a story.</h1>
       <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
         Tell us about someone shaping the future of food &mdash; or about

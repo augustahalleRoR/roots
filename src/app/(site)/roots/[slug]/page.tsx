@@ -227,7 +227,7 @@ export default async function RootPage({
                 Know someone {firstName} would want you to meet?
               </p>
               <span className="mt-6 inline-flex items-center gap-2 font-mono text-[10.5px] uppercase text-ink-soft group-hover:text-ink">
-                Nominate them <ArrowRightIcon className="h-3.5 w-3.5" />
+                Add them to the map <ArrowRightIcon className="h-3.5 w-3.5" />
               </span>
             </Link>
           </div>

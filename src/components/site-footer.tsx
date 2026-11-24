@@ -6,7 +6,7 @@ const explore = [
   { href: "/collections/roots-on-the-road", label: "Roots on the Road" },
   { href: "/map", label: "The Map" },
   { href: "/about", label: "About" },
-  { href: "/add", label: "Nominate someone" },
+  { href: "/add", label: "Add someone to the map" },
   { href: "/privacy", label: "Privacy" },
 ];
 

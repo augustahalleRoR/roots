@@ -32,7 +32,7 @@ export default async function AboutPage() {
           </p>
           <p>
             Every portrait is a real person, in their own words, pinned to
-            the place they work. Anyone can nominate someone, including
+            the place they work. Anyone can add someone to the map, including
             themselves. We read every submission by hand and check in before
             anything goes public.
           </p>

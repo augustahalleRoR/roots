@@ -27,7 +27,7 @@ const sections: { title: string; body: React.ReactNode }[] = [
     body: (
       <ul>
         <li>
-          <strong>When you nominate someone (or yourself):</strong> their
+          <strong>When you add someone (or yourself) to the map:</strong> their
           name, where they are, any photos you add, a quote, and the story
           you write. We also ask for your email so we can follow up.
         </li>
@@ -126,7 +126,7 @@ export default function PrivacyPage() {
       <p className="mt-16 border-t border-line pt-8 text-[15px] text-ink-soft">
         Know someone who belongs here?{" "}
         <Link href="/add" className="text-ink underline decoration-line underline-offset-4 hover:text-moss">
-          Nominate them
+          Add them to the map
         </Link>
         .
       </p>
