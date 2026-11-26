@@ -8,11 +8,12 @@
 
 :root {
   /* -- Roots design tokens: editorial --
-     Modeled on photography books and story archives: a white ground,
+     Modeled on photography books and story archives: a warm ivory ground,
      near-black type, thin rules, and one restrained accent (deep forest
      green). The photos carry the color. */
-  --paper: #fcfcfa;       /* near-white page ground */
-  --paper-warm: #f3f2ee;  /* soft stone panel -- neutral, not cream */
+  --paper: #fbf9f4;       /* warm ivory page ground */
+  --paper-warm: #f2ede3;  /* soft cream panel */
+  --sage: #e5e8dc;        /* muted green panel -- used sparingly */
   --ink: #161615;         /* near-black text */
   --ink-soft: #5f5e59;    /* secondary text */
   --moss: #2f5240;        /* forest green -- the one accent */
@@ -20,7 +21,7 @@
   --wheat: #c2a36b;       /* muted brass -- small details on dark grounds */
   --indigo: #2f5240;      /* links -- same forest accent */
   --thread: #2f5240;
-  --line: #e2e0da;        /* hairline rule */
+  --line: #e3ddd1;        /* hairline rule, warm */
 
   --font-display: "Cormorant Garamond", "Cormorant", Garamond, "Times New Roman", serif;
   --font-body: "Jost Variable", "Jost", "Futura", ui-sans-serif, system-ui, sans-serif;
@@ -32,6 +33,7 @@
 @theme inline {
   --color-paper: var(--paper);
   --color-paper-warm: var(--paper-warm);
+  --color-sage: var(--sage);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-moss: var(--moss);

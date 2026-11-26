@@ -7,13 +7,16 @@ export const metadata = {
 export default async function AddPage({
   searchParams,
 }: {
-  searchParams: Promise<{ for?: string }>;
+  searchParams: Promise<{ for?: string; path?: string }>;
 }) {
   // /add?for=self or /add?for=other preselects the first question, so the
   // homepage's "Tell your own story" / "Add someone to the map" buttons land
   // one step in.
-  const { for: who } = await searchParams;
+  // /add?path=quick or /add?path=full preselects how much time they have
+  // (the homepage "Nominate" and "Create" cards).
+  const { for: who, path } = await searchParams;
   const initialSubject = who === "self" ? "self" : who === "other" ? "other" : undefined;
+  const initialPath = path === "quick" ? "quick" : path === "full" ? "full" : undefined;
 
   return (
     <section className="mx-auto max-w-2xl px-6 py-14 sm:px-10">
@@ -27,7 +30,7 @@ export default async function AddPage({
       </p>
 
       <div className="mt-10">
-        <AddStoryForm initialSubject={initialSubject} />
+        <AddStoryForm initialSubject={initialSubject} initialPath={initialPath} />
       </div>
     </section>
   );

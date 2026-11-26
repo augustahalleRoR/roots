@@ -53,9 +53,12 @@ function Field({
 const inputClass =
   "w-full border border-line bg-paper px-3 py-2 text-[15px] text-ink placeholder:text-ink-soft/60 focus:border-ink focus:outline-none";
 
-export function AddStoryForm({ initialSubject }: { initialSubject?: Subject } = {}) {
+export function AddStoryForm({
+  initialSubject,
+  initialPath,
+}: { initialSubject?: Subject; initialPath?: Path } = {}) {
   const [subject, setSubject] = useState<Subject | null>(initialSubject ?? null);
-  const [path, setPath] = useState<Path | null>(null);
+  const [path, setPath] = useState<Path | null>(initialPath ?? null);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -170,7 +173,7 @@ export function AddStoryForm({ initialSubject }: { initialSubject?: Subject } = 
         </fieldset>
       )}
 
-      {path && (
+      {subject && path && (
         <fieldset className="space-y-6 border-t border-line pt-8">
           {subject === "other" && (
             <Field label="Submitted by" hint="you, or your relationship to them">

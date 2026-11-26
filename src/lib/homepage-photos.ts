@@ -1,6 +1,7 @@
-// The two big landing-page banners. Both are editable in Studio under
-// "Homepage photos". Until a top banner is uploaded there, it falls back to
-// the Everett Farms crew trip photo. The bottom photo sits beside the
+// The two big landing-page photos. Both are editable in Studio under
+// "Homepage photos". Until a top photo is uploaded there, the hero uses
+// the Everett Farms crew photo from the ride (so the one published
+// portrait isn't repeated up top). The bottom photo sits beside the
 // "Where it started" text (4:3); without one, that section is a plain band.
 
 import type { Image } from "sanity";
@@ -34,8 +35,10 @@ export async function getHomepagePhotos(): Promise<{
     fallbackId: FALLBACK_HERO_ID,
   });
 
+  // The hero sits in a tall panel beside the headline: the Studio photo if
+  // one is set, otherwise the ride photo above.
   const heroSource = doc.home?.heroImage?.asset ? doc.home.heroImage : doc.fallback?.image;
-  const heroUrl = wide(heroSource, 2400, 1200);
+  const heroUrl = wide(heroSource, 1600, 1800);
   const heroAlt =
     doc.home?.heroImage?.alt || doc.fallback?.caption || "A photo from the Roots on the Road ride";
 

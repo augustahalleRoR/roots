@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getRoots } from "@/lib/roots";
+import { getTheme, rootMatchesTheme } from "@/lib/themes";
 
 export const metadata = {
   title: "Portraits — Roots",
@@ -14,21 +15,39 @@ export const revalidate = 60;
 // tiles reads as "unfinished" rather than "growing".
 const MIN_TILES = 1;
 
-export default async function PortraitsPage() {
-  const roots = await getRoots();
+export default async function PortraitsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ theme?: string }>;
+}) {
+  // /portraits?theme=growing-the-future narrows the grid to one theme
+  // (see src/lib/themes.ts). An unknown theme just shows everyone.
+  const { theme: themeSlug } = await searchParams;
+  const theme = getTheme(themeSlug);
+  const all = await getRoots();
+  const roots = theme ? all.filter((r) => rootMatchesTheme(r, theme)) : all;
   const openTiles = MIN_TILES;
 
   return (
     <div>
       <section className="mx-auto max-w-6xl px-6 pb-10 pt-14 sm:px-10">
-        <p className="section-label">The Portraits</p>
+        <p className="section-label">{theme ? `Theme · ${theme.title}` : "The Portraits"}</p>
         <h1 className="mt-4 max-w-3xl font-display text-5xl leading-[1.05] text-ink sm:text-6xl">
-          Meet the people shaping the future of food.
+          {theme ? theme.title : "Meet the people shaping the future of food."}
         </h1>
         <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-ink-soft">
-          Every face here has a story behind it. Tap a portrait to read it,
-          in their own words.
+          {theme
+            ? theme.blurb
+            : "Every face here has a story behind it. Tap a portrait to read it, in their own words."}
         </p>
+        {theme && (
+          <Link
+            href="/portraits"
+            className="mt-6 inline-block border-b border-ink pb-0.5 font-mono text-[11px] uppercase text-ink hover:border-moss hover:text-moss"
+          >
+            See all portraits
+          </Link>
+        )}
       </section>
 
       <ul className="grid grid-cols-2 gap-[3px] bg-ink sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">

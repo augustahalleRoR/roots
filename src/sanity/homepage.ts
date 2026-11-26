@@ -28,7 +28,7 @@ export const homepage = defineType({
     bannerImage(
       "heroImage",
       "Top banner photo",
-      "Wide landscape photo, at least 2400px across. Put the person on the right third -- the headline sits over the left side. Click the crop icon to set the focus point."
+      "Optional. A large photo of a person, shown tall beside the headline at the top of the homepage (cropped to roughly 8:9). Leave empty to use the Everett Farms crew photo from the ride. Click the crop icon to set the focus point on the person's face."
     ),
     bannerImage(
       "bannerImage",

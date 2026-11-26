@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { EmailSignupForm } from "@/components/email-signup-form";
+import { FooterNewsletter } from "@/components/footer-newsletter";
 import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_TEL } from "@/lib/contact";
 
 const explore = [
-  { href: "/portraits", label: "Portraits" },
+  { href: "/portraits", label: "People" },
   { href: "/collections/roots-on-the-road", label: "Roots on the Road" },
   { href: "/map", label: "The Map" },
   { href: "/about", label: "About" },
-  { href: "/add", label: "Add someone to the map" },
+  { href: "/add", label: "Contribute" },
   { href: "/privacy", label: "Privacy" },
 ];
 
@@ -15,19 +15,7 @@ export function SiteFooter() {
   return (
     <footer className="bg-moss-deep text-paper">
       {/* The newsletter as a quiet line, not a pitch */}
-      <div className="border-b border-paper/15">
-        <div className="mx-auto flex max-w-6xl flex-col gap-5 px-6 py-12 sm:px-10 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="font-display text-3xl leading-tight">
-              We&rsquo;ll bring the next portrait to you.
-            </p>
-            <p className="mt-1 text-[14px] text-paper/70">
-              Occasional updates when new stories go up. Nothing else.
-            </p>
-          </div>
-          <EmailSignupForm />
-        </div>
-      </div>
+      <FooterNewsletter />
 
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:grid-cols-2 sm:px-10 lg:grid-cols-4">
         <div>

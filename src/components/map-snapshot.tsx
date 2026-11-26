@@ -14,9 +14,12 @@ const SHOW_COUNT_AT = 10;
 export function MapSnapshot({
   roots,
   showFooter = true,
+  linkPins = false,
 }: {
   roots: Root[];
   showFooter?: boolean;
+  // Make each pin a link to that person's portrait.
+  linkPins?: boolean;
 }) {
   const { land, interior, outline } = getUsMapGeometry();
   const pins = roots
@@ -31,7 +34,7 @@ export function MapSnapshot({
       <svg
         viewBox={MAP_VIEWBOX}
         className="w-full"
-        role="img"
+        role={linkPins ? undefined : "img"}
         aria-label="Preview of the Roots map"
       >
         <path
@@ -54,8 +57,11 @@ export function MapSnapshot({
           strokeLinejoin="round"
         />
         <g>
-          {pins.map((pin) => (
-            <g key={pin.root.slug} transform={`translate(${pin.x}, ${pin.y})`}>
+          {pins.map((pin) => {
+            const label = `${pin.root.name}, ${pin.root.city}, ${pin.root.state}`;
+            const dot = (
+            <g transform={`translate(${pin.x}, ${pin.y})`}>
+              <title>{label}</title>
               <circle r={7} fill="var(--moss)" opacity={0.45}>
                 <animate
                   attributeName="r"
@@ -78,7 +84,15 @@ export function MapSnapshot({
                 strokeWidth={2}
               />
             </g>
-          ))}
+            );
+            return linkPins ? (
+              <a key={pin.root.slug} href={`/roots/${pin.root.slug}`} aria-label={`Read the portrait of ${label}`} className="cursor-pointer">
+                {dot}
+              </a>
+            ) : (
+              <g key={pin.root.slug}>{dot}</g>
+            );
+          })}
         </g>
       </svg>
 

@@ -3,9 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// Five plain destinations. "Contribute" is the existing add-a-story flow;
+// it gets a light outline so the one ask is easy to find.
 const navLinks = [
-  { href: "/portraits", label: "Portraits" },
+  { href: "/", label: "Home" },
+  { href: "/portraits", label: "People" },
   { href: "/map", label: "Map" },
+  { href: "/add", label: "Contribute", emphasis: true },
   { href: "/about", label: "About" },
 ];
 
@@ -24,13 +28,34 @@ export function SiteHeader() {
             Food has roots. So do we.
           </span>
         </Link>
-        <nav className="flex w-full items-center justify-between gap-4 font-mono text-[11px] uppercase text-ink-soft sm:w-auto sm:justify-end sm:gap-7">
+        <nav
+          aria-label="Main"
+          className="flex w-full flex-wrap items-center justify-between gap-x-3 gap-y-1 font-mono text-[11px] uppercase text-ink-soft sm:w-auto sm:justify-end sm:gap-7"
+        >
           {navLinks.map((link) => {
-            const active = pathname?.startsWith(link.href);
+            const active =
+              link.href === "/" ? pathname === "/" : pathname?.startsWith(link.href);
+            if (link.emphasis) {
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={active ? "page" : undefined}
+                  className={`whitespace-nowrap border-b py-1 transition-colors sm:border sm:px-4 sm:py-2 ${
+                    active
+                      ? "border-ink text-ink sm:bg-ink sm:text-paper"
+                      : "border-transparent text-ink hover:text-moss sm:border-ink sm:hover:bg-ink sm:hover:text-paper"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            }
             return (
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={active ? "page" : undefined}
                 className={`border-b py-1 transition-colors hover:text-ink ${
                   active ? "border-ink text-ink" : "border-transparent"
                 }`}
@@ -39,12 +64,6 @@ export function SiteHeader() {
               </Link>
             );
           })}
-          <Link
-            href="/add"
-            className="hidden whitespace-nowrap border border-ink px-4 py-2 text-ink transition-colors hover:bg-ink hover:text-paper sm:inline-block"
-          >
-            Add someone to the map
-          </Link>
         </nav>
       </div>
     </header>

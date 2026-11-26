@@ -138,6 +138,16 @@ export function ArrowRightIcon(props: IconProps) {
   );
 }
 
+export function PenIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z" />
+      <path d="M14.5 5.5l3 3" />
+      <path d="M12 20h8" />
+    </svg>
+  );
+}
+
 export function BikeIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
